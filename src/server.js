@@ -3,7 +3,8 @@ const { static: fileServer } = require('express')
 const { urlFile } = require('./config/constants')
 const cors = require('cors');
 const connectDB = require('./db/connection');
-const uploadRouter = require('./routes/upload.routes')
+const workerRouter = require('./routes/worker.routes')
+const authRouter = require('./routes/auth.routes')
 
 require('dotenv').config();
 
@@ -14,11 +15,9 @@ app.use(express.json());
 
 connectDB();
 
-app.use('/api/workers', require('./routes/worker.routes'));
-
+app.use('/api/workers', workerRouter);
+app.use('/api/auth', authRouter)
 app.use('/api/files', fileServer(urlFile))
-
-app.use('/api', uploadRouter)
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {

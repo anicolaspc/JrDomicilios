@@ -6,10 +6,12 @@ const {
     actualizarTrabajador,
     eliminarTrabajador
 } = require('../controllers/worker.controller');
+const multerUpload = require('../middleware/multer')
+const authMiddleware = require('../middleware/auth.middleware')
 
 router.get('/', listarTrabajadores);
-router.post('/', crearTrabajador);
-router.put('/:mobile', actualizarTrabajador);
-router.delete('/:mobile', eliminarTrabajador); 
+router.post('/', authMiddleware, multerUpload.single('file'), crearTrabajador);
+router.put('/:mobile', authMiddleware, multerUpload.single('file'), actualizarTrabajador);
+router.delete('/:mobile', authMiddleware, eliminarTrabajador); 
 
 module.exports = router;

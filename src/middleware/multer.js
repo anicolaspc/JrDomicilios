@@ -7,7 +7,7 @@ const multerUpload = multer({
         destination: urlFile,
         filename(req, file, callback){
             const extension = extname(file.originalname)
-            const name = file.originalname.split(extension)[0]
+            const name = file.originalname.split(extension)[0].replace(/\s+/g, '_')
             callback(null, `${name}-${Date.now()}${extension}`)
         }
     }),
