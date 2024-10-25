@@ -151,7 +151,7 @@ const listarTrabajadores = async (req, res) => {
 
 module.exports = {
     listarTrabajadores,
-    crearTrabajador,
-    actualizarTrabajador,
-    eliminarTrabajador
+    // crearTrabajador,
+    // actualizarTrabajador,
+    // eliminarTrabajador
 };
