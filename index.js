@@ -1,10 +1,10 @@
 const express = require('express');
 const { static: fileServer } = require('express')
-const { urlFile } = require('./config/constants')
+const { urlFile } = require('./src/config/constants')
 const cors = require('cors');
-const connectDB = require('./db/connection');
-const workerRouter = require('./routes/worker.routes')
-const authRouter = require('./routes/auth.routes')
+const connectDB = require('./src/db/connection');
+const workerRouter = require('./src/routes/worker.routes')
+const authRouter = require('./src/routes/auth.routes')
 
 require('dotenv').config();
 
