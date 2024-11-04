@@ -13,7 +13,7 @@ app.use(express.json());
 
 connectDB();
 
-app.get('/api/workers', workerRouter);
+app.use('/api/workers', workerRouter);
 app.use('/api/auth', authRouter)
 
 // const PORT = process.env.PORT || 5000;
