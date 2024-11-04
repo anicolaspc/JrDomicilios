@@ -16,9 +16,7 @@ connectDB();
 app.use('/api/workers', workerRouter);
 app.use('/api/auth', authRouter)
 
-// const PORT = process.env.PORT || 5000;
-// app.listen(PORT, () => {
-//     console.log(`Servidor corriendo en el puerto ${PORT}`); 
-// });
-
-module.exports = app
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+    console.log(`Servidor corriendo en el puerto ${PORT}`); 
+});
