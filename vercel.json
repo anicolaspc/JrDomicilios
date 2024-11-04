@@ -8,7 +8,7 @@
     ],
     "routes": [
         {
-            "src": "/api/workers(.*)",
+            "src": "/(.*)",
             "dest": "index.js"
         }
     ]

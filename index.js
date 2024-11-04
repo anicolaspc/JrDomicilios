@@ -13,6 +13,9 @@ app.use(express.json());
 
 connectDB();
 
+app.get('/', (req, res) => {
+    res.redirect('/api/workers');
+});
 app.use('/api/workers', workerRouter);
 app.use('/api/auth', authRouter)
 
