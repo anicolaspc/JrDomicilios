@@ -1,6 +1,4 @@
 const express = require('express');
-const { static: fileServer } = require('express')
-const { urlFile } = require('./src/config/constants')
 const cors = require('cors');
 const connectDB = require('./src/db/connection');
 const workerRouter = require('./src/routes/worker.routes')
@@ -17,7 +15,6 @@ connectDB();
 
 app.use('/api/workers', workerRouter);
 app.use('/api/auth', authRouter)
-app.use('/api/files', fileServer(urlFile)) 
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {

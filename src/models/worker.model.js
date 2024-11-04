@@ -4,7 +4,7 @@ const workerSchema = new mongoose.Schema({
     name: { type: String, required: true },
     id: { type: String, required: true, unique: true },
     motorcycleType: { type: String, required: true },
-    mobile: { type: Number, required: true, unique: true },
+    mobile: { type: Number, required: true },
     bloodType: { type: String, required: true },
     birthdate: { type: Date, required: true },
     file: { type: String, required: true }
