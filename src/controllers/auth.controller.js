@@ -22,7 +22,7 @@ const login = async (req, res) => {
     try {
         const admin = await Admin.findOne({ userName })
         if (!admin) {
-            return res.status(400).json({ message: 'Credenciales incorrectas' })
+            return res.status(400).json({ message: userName + ' no encontrado' })
         }
         const isMatch = await bcrypt.compare(password, admin.password)
         if (!isMatch) {

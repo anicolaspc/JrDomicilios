@@ -58,6 +58,9 @@ const actualizarTrabajador = async (req, res) => {
     const { newMobile, ...updateFields } = req.body;
     const file = req.file
 
+    console.log('Datos recibidos para actualizar:', req.body);
+    console.log('Archivo recibido:', req.file);
+
     try {
         const updatedWorker = await Worker.findOne({ mobile })
         if (!updatedWorker) {
