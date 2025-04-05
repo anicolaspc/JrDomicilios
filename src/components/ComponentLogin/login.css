@@ -1,0 +1,24 @@
+.ImgFondo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+    background-image: url('../../assets/logo.jpg');
+    background-size: cover;
+    background-position: center;
+    flex-direction: column;
+    margin: 5vh;
+}
+
+.ContenedorLogin{
+    height: auto;
+    width: auto;
+    text-align: center;
+    padding: 20px;
+}
+
+.Login{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}

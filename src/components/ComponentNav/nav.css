@@ -1,0 +1,26 @@
+#appbar{
+    background-color: #00001a;
+}
+
+.Logo{
+    height: 10vh;
+    padding: 5px;
+}
+
+#TituloLogo{
+    font-size: 11px;
+    flex-grow: 1;
+    padding-right: 10px;
+    text-transform: uppercase;
+}
+
+#ButtonNav{
+    font-size: 11px;
+    background-color: rgba(128, 128, 128, 0.8);
+    text-align: center;
+}
+
+#MenuItem{
+    font-size: 11px;
+    text-align: center;
+}

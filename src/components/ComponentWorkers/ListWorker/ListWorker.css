@@ -1,0 +1,20 @@
+.GridContainer{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.Card{
+    width: 100%;
+    max-width: 250px;
+    margin: 10px;
+}
+
+.CardMedia{
+    height: 200px;
+    object-fit: cover;
+}
+
+.CardContent{
+    text-align: center;
+}
