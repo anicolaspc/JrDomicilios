@@ -1,6 +1,10 @@
 import { Box, Button } from "@mui/material"
 import { Worker } from "../../ComponentInterface"
-import Delete from "../DeleteWorkers"
+import EditIcon from '@mui/icons-material/Edit'
+import AddIcon from '@mui/icons-material/Add'
+import DeleteIcon from '@mui/icons-material/Delete'
+import { useState } from "react"
+import DeleteWorkers from "../DeleteWorkers"
 
 interface ActionMenuProps {
     worker?: Worker
@@ -19,6 +23,12 @@ const ActionMenu: React.FC<ActionMenuProps> = ({
     setSelectedWorker,
     onDelete,
 }) => {
+    const [openDialog, setOpenDialog] = useState(false)
+
+    const handleDelete = () => {
+        setOpenDialog(true)
+    }
+
     return (
         <Box display="flex" gap={1}>
             {worker ? (
@@ -31,10 +41,27 @@ const ActionMenu: React.FC<ActionMenuProps> = ({
                             setFormAction("update")
                             setShowForm(true)
                         }}
+                        startIcon={<EditIcon />}
                     >
                         Editar
                     </Button>
-                    <Delete mobile={worker.mobile} token={token} onDelete={onDelete} />
+
+                    <Button
+                        variant="contained"
+                        color="error"
+                        onClick={handleDelete}
+                        startIcon={<DeleteIcon />}
+                    >
+                        Eliminar
+                    </Button>
+
+                    <DeleteWorkers
+                        mobile={worker.mobile}
+                        token={token}
+                        onDelete={onDelete}
+                        openDialog={openDialog}
+                        setOpenDialog={setOpenDialog}
+                    />
                 </>
             ) : (
                 <Button
@@ -45,6 +72,7 @@ const ActionMenu: React.FC<ActionMenuProps> = ({
                         setFormAction("create")
                         setShowForm(true)
                     }}
+                    startIcon={<AddIcon />}
                 >
                     Agregar Trabajador
                 </Button>
@@ -53,4 +81,4 @@ const ActionMenu: React.FC<ActionMenuProps> = ({
     )
 }
 
-export default ActionMenu 
+export default ActionMenu

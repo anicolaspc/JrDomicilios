@@ -1,14 +1,15 @@
-import React, { SyntheticEvent, useState } from "react"
+import React, { useState } from "react"
+import { Dialog, DialogActions, DialogContent, DialogTitle, Button } from "@mui/material"
 
 interface DeleteProps {
     mobile: string
     token: string
     onDelete: (mobile: string) => void
+    openDialog: boolean
+    setOpenDialog: (open: boolean) => void
 }
 
-const Delete: React.FC<DeleteProps> = ({ mobile, token, onDelete }) => {
-
-    const [open, setOpen] = useState(false)
+const DeleteWorkers: React.FC<DeleteProps> = ({ mobile, token, onDelete, openDialog, setOpenDialog }) => {
     const [message, setMessage] = useState('')
     const [_severity, setSeverity] = useState<'success' | 'error'>('success')
 
@@ -25,36 +26,39 @@ const Delete: React.FC<DeleteProps> = ({ mobile, token, onDelete }) => {
             if (!res.ok) {
                 throw new Error('Error al eliminar el trabajador')
             }
+
             setMessage('Trabajador eliminado con éxito')
             setSeverity('success')
-            setOpen(true)
             onDelete(mobile)
+            setOpenDialog(false)
         } catch (error) {
             setMessage('¡Hubo un error al eliminar el trabajador!')
             setSeverity('error')
-            setOpen(true)
             console.error('¡Hubo un error al eliminar el trabajador!', error)
         }
     }
 
-    const handleClose = (_event?: SyntheticEvent | Event, reason?: string) => {
-        if (reason === 'clickaway') {
-            return
-        }
-        setOpen(false)
-    }
-
     return (
-        <>
-            <button onClick={handleDelete}>Eliminar</button>
-            {open && (
+        <Dialog open={openDialog} onClose={() => setOpenDialog(false)}>
+            <DialogTitle>Confirmar eliminación</DialogTitle>
+            <DialogContent>
+                ¿Estás seguro de que deseas eliminar a este trabajador?
+            </DialogContent>
+            <DialogActions>
+                <Button onClick={() => setOpenDialog(false)} color="primary">
+                    Cancelar
+                </Button>
+                <Button onClick={handleDelete} color="secondary">
+                    Eliminar
+                </Button>
+            </DialogActions>
+            {message && (
                 <div>
                     <p>{message}</p>
-                    <button onClick={handleClose}>Cerrar</button>
                 </div>
             )}
-        </>
+        </Dialog>
     )
 }
 
-export default Delete 
+export default DeleteWorkers
