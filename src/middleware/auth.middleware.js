@@ -7,7 +7,7 @@ const authMiddleware = async (req, res, next) => {
         return res.status(403).json({ message: 'Acceso denegado. No hay token' });
     }
     
-    const token = authHeader.split(' ')[0];
+    const token = authHeader.split(' ')[1];
     if (!token) {
         return res.status(403).json({ message: 'Acceso denegado. Token no válido' });
     }
