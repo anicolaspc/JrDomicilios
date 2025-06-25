@@ -34,7 +34,7 @@ const Form: React.FC<FormProps> = ({ NewWorker, onSubmit, onChange, onFileChange
                             type={field === 'birthdate' ? 'date' : 'text'}
                             id={field}
                             name={field}
-                            defaultValue={NewWorker[field as keyof Worker]}
+                            value={NewWorker[field as keyof Worker]}
                             onChange={onChange}
                             variant='outlined'
                             fullWidth
